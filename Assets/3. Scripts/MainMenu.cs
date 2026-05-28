@@ -29,8 +29,17 @@ public class MainMenu : MonoBehaviour
 
     void PressStart()
     {
-        startP.SetActive(false);
 
+    }
 
+    public IEnumerator UIAnimation(Transform pos, Vector3 target)
+    {
+        pos.gameObject.SetActive(false);
+
+        while (pos.position != target)
+        {
+            pos.position = Vector3.MoveTowards(pos.position, target, 1.5f);
+            yield return null;
+        }
     }
 }
