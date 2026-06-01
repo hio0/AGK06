@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
 {
-    PlayerFly myshot;
+    BulletData myshot;
     float bulletime;
     GameObject bullet;
     Transform shotpoint;
@@ -14,7 +14,7 @@ public class PlayerShot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myshot = gameObject.GetComponent<Player>().me;
+        myshot = gameObject.GetComponent<Player>().me.bullet;
         shotpoint = gameObject.GetComponent<Player>().shotpoint.transform;
         bulletime = myshot.bulletimer;
     }

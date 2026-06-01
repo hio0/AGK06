@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         int hp = gameObject.GetComponent<HitBox>().hp;
-        if (heartPos.childCount != hp)
+        if (heartPos.childCount != hp && hp > 0)
         {
             int chai = hp - heartPos.childCount;
             
@@ -34,9 +34,11 @@ public class Player : MonoBehaviour
             }
             else // hp가 감소됨
             {
+                Debug.Log(hp);
+                Debug.Log(heartPos.childCount);
                 for (int i = heartPos.childCount; i > hp; i--)
                 {
-                    Destroy(heartPos.GetChild(i));
+                    Destroy(heartPos.GetChild(i - 1).gameObject);
                 }
             }
         }
@@ -44,6 +46,10 @@ public class Player : MonoBehaviour
         if(hp >= 5)
         {
             hp = 5;
+        }
+        else if(hp  <= 0)
+        {
+            hp = 0;
         }
     }
 }

@@ -12,10 +12,7 @@ public class PlayerFly : ScriptableObject
     public float movespeed;
 
     [Header("기본공격")]
-    public GameObject bullet;
-    public int bulletdamage;
-    public float bulletimer;
-    public float bulletspeed;
+    public BulletData bullet;
 
     [Header("서브")]
     public GameObject subweapon;

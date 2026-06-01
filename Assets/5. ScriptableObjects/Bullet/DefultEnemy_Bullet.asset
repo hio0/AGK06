@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201430587b6ba3841a848892a316672e, type: 3}
+  m_Name: DefultEnemy_Bullet
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6500945928026489733, guid: 55c665af4e937ad46b1cf0d35b8f6493, type: 3}
+  bulletdamage: 1
+  bulletimer: 0.5
+  bulletspeed: 10

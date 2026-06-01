@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class HitBox : MonoBehaviour
 {
     public int hp;
+
+    public Action Dyed;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +18,7 @@ public class HitBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Damaged(int damage)

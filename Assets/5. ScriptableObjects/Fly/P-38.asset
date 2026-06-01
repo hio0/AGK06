@@ -15,10 +15,7 @@ MonoBehaviour:
   flyname: P-38
   hp: 2
   movespeed: 4
-  bullet: {fileID: 5339629885704683501, guid: 5571fae6273a86543bfb6271dc0695fb, type: 3}
-  bulletdamage: 5
-  bulletimer: 0.5
-  bulletspeed: 10
+  bullet: {fileID: 11400000, guid: 095fdebaee3e9674887e24e2f5bc1f7d, type: 2}
   subweapon: {fileID: 4440037169073795232, guid: b4e353399a722cf40bbb44b4fe9985f1, type: 3}
   subdamage: 3
   subspeed: 15
