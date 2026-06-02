@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6500945928026489733, guid: 55c665af4e937ad46b1cf0d35b8f6493, type: 3}
   bulletdamage: 1
-  bulletimer: 1
-  bulletspeed: 5
+  bulletimer: 1.5
+  bulletspeed: 3

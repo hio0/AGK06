@@ -12,13 +12,16 @@ public class HitBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (hp <= 0)
+        {
+            Dyed?.Invoke();
+        }
     }
 
     public void Damaged(int damage)

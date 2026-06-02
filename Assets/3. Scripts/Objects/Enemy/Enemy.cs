@@ -17,7 +17,10 @@ public class Enemy : MonoBehaviour
         shotpoint = gameObject.transform.GetChild(0).gameObject.transform;
 
         gameObject.GetComponent<HitBox>().hp = me.hp;
+        gameObject.GetComponent<HitBox>().Dyed = gameObject.GetComponent<IEnemy>().Dyed;
         gameObject.GetComponent<Enemy>().bulletime = me.bullet.bulletimer;
+
+        transform.position = new Vector2(UnityEngine.Random.Range(-2.5f, 2.5f), transform.position.y);
     }
 
     private void FixedUpdate()

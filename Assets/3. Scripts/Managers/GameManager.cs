@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
     int wavecount;
     public Transform enemyspon;
 
+    public GameObject gameoverP;
+    float gameovercount;
+    public TMP_Text gameoverT;
+    public GameObject P;
+
     private void Awake()
     {
         if (gm == null)
@@ -48,14 +54,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             NextStage();
         }
 
-        if(enemyspon.childCount == 0 && isready)
+        if (wavecount < nowstage.EnemyWave.Count && enemyspon.childCount == 0 && isready)
         {
             EnemySpawn();
+        }
+
+        if(gameoverP.activeSelf)
+        {
+            gameovercount -= Time.deltaTime;
+            if(gameovercount <= 0)
+            {
+                gameovercount = 0;
+                NoContinue();
+            }
+
+            gameoverT.text = $"continue? <size=45>{gameovercount.ToString("F0")}</size>";
         }
     }
 
@@ -85,11 +103,13 @@ public class GameManager : MonoBehaviour
 
         wavecount = 0;
         isready = false;
+        gameoverP.SetActive(false);
+        gameovercount = 10;
     }
 
     void SetStage()
     {
-        for(int i = 0;i < enemyspon.childCount;i++)
+        for (int i = 0; i < enemyspon.childCount; i++)
         {
             Destroy(enemyspon.GetChild(i).gameObject);
         }
@@ -102,9 +122,30 @@ public class GameManager : MonoBehaviour
 
     void EnemySpawn()
     {
-        GameObject ene = Instantiate(nowstage.EnemyWave[wavecount].enemy, enemyspon); 
+        GameObject ene = Instantiate(nowstage.EnemyWave[wavecount].enemy, enemyspon);
         ene.GetComponent<IEnemy>().enemydata = nowstage.EnemyWave[wavecount];
 
         wavecount++;
+    }
+
+    public void GameOver()
+    {
+        gameoverP.SetActive(true);
+    }
+
+    public void Continue()
+    {
+        Debug.Log("나의 용돈을 오락실 게임기에 넣었다.\n<i>거지가 된 기분이다...</i>");
+
+        gameoverP.SetActive(false);
+        gameovercount = 10;
+
+        P.SetActive(true);
+        P.GetComponent<HitBox>().hp = P.GetComponent<Player>().me.hp;
+    }
+
+    public void NoContinue()
+    {
+        Debug.Log("결과창");
     }
 }

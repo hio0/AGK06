@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         gameObject.GetComponent<HitBox>().hp = me.hp;
+        gameObject.GetComponent<HitBox>().Dyed = Dye;
     }
 
     // Update is called once per frame
@@ -47,9 +48,16 @@ public class Player : MonoBehaviour
         {
             hp = 5;
         }
-        else if(hp  <= 0)
+    }
+
+    void Dye()
+    {
+        for (int i = heartPos.childCount; i > 0; i--)
         {
-            hp = 0;
+            Destroy(heartPos.GetChild(i - 1).gameObject);
         }
+
+        GameManager.gm.GameOver();
+        gameObject.SetActive(false);
     }
 }
