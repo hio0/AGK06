@@ -23,11 +23,6 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
-
-        float x = Mathf.Clamp(gameObject.transform.position.x, -3.55f, 3.55f);
-        float y = Mathf.Clamp(gameObject.transform.position.y, -4.4f, 4.4f);
-
-        transform.position = new Vector2(x, y);
     }
 
     // Update is called once per frame

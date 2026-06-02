@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,10 +22,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("triggered");
         bool ishit = collision.gameObject.TryGetComponent<HitBox>(out HitBox hit);
 
         if(ishit)
         {
+            Debug.Log("hit");
             hit.Damaged(damage);
             Destroy(gameObject);
         }

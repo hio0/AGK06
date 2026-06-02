@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 201430587b6ba3841a848892a316672e, type: 3}
-  m_Name: DefultEnemy_Bullet
+  m_Script: {fileID: 11500000, guid: 7e7b3cd6c29bf65438ab96b33d0127fd, type: 3}
+  m_Name: 1-1
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6500945928026489733, guid: 55c665af4e937ad46b1cf0d35b8f6493, type: 3}
-  bulletdamage: 1
-  bulletimer: 1
-  bulletspeed: 5
+  bg: {fileID: 2100000, guid: 7fcae5f07bf1f1146a965e7a51f2a8b6, type: 2}
+  EnemyWave:
+  - {fileID: 11400000, guid: 500c8354efd709349a51c5f8c79f1f83, type: 2}

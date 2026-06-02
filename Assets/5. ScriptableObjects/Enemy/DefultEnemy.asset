@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0c16a830876fe46b4aec2ca3da94e1, type: 3}
   m_Name: DefultEnemy
   m_EditorClassIdentifier: 
+  enemy: {fileID: 9109475713817834696, guid: 889fa7706a024b94fa89b5bbb0d96669, type: 3}
   image: {fileID: 845767083, guid: ca4e4d63934e16a4f827aa1e94ab0c61, type: 3}
   hp: 15
+  movespeed: 4
   bullet: {fileID: 11400000, guid: 1d25b2c076350944887cbe71933be2a3, type: 2}

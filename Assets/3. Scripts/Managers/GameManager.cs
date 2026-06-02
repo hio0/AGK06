@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,15 @@ public class GameManager : MonoBehaviour
     public static GameManager gm;
 
     public Data data;
+
+    public List<Stage> stages;
+    Stage nowstage;
+    bool isready;
+    public TMP_Text stagenumT;
+    public MeshRenderer bg;
+
+    int wavecount;
+    public Transform enemyspon;
 
     private void Awake()
     {
@@ -42,18 +52,59 @@ public class GameManager : MonoBehaviour
         {
             NextStage();
         }
+
+        if(enemyspon.childCount == 0 && isready)
+        {
+            EnemySpawn();
+        }
     }
 
     void NewGame()
     {
         data = new Data();
 
-        data.stagenum = 0;
+        data.stagenum = 1;
+        ResetStage();
+        SetStage();
     }
 
     void NextStage()
     {
         data.stagenum++;
-        SceneManager.LoadScene(data.stagenum);
+
+        ResetStage();
+        SetStage();
+    }
+
+    void ResetStage()
+    {
+        for (int i = 0; i < enemyspon.childCount; i++)
+        {
+            Destroy(enemyspon.GetChild(i).gameObject);
+        }
+
+        wavecount = 0;
+        isready = false;
+    }
+
+    void SetStage()
+    {
+        for(int i = 0;i < enemyspon.childCount;i++)
+        {
+            Destroy(enemyspon.GetChild(i).gameObject);
+        }
+
+        nowstage = stages[data.stagenum - 1];
+        stagenumT.text = nowstage.name;
+        bg.material = nowstage.bg;
+        isready = true;
+    }
+
+    void EnemySpawn()
+    {
+        GameObject ene = Instantiate(nowstage.EnemyWave[wavecount].enemy, enemyspon); 
+        ene.GetComponent<IEnemy>().enemydata = nowstage.EnemyWave[wavecount];
+
+        wavecount++;
     }
 }
