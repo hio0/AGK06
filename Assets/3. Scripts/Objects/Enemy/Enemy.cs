@@ -13,14 +13,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        me = gameObject.GetComponent<IEnemy>().enemydata;
         shotpoint = gameObject.transform.GetChild(0).gameObject.transform;
 
         gameObject.GetComponent<HitBox>().hp = me.hp;
         gameObject.GetComponent<HitBox>().Dyed = gameObject.GetComponent<IEnemy>().Dyed;
         gameObject.GetComponent<Enemy>().bulletime = me.bullet.bulletimer;
-
-        transform.position = new Vector2(UnityEngine.Random.Range(-2.5f, 2.5f), transform.position.y);
     }
 
     private void FixedUpdate()
@@ -44,5 +41,15 @@ public class Enemy : MonoBehaviour
 
             bulletime = me.bullet.bulletimer;
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        gameObject.GetComponent<HitBox>().enabled = false;
+    }
+
+    private void OnBecameVisible()
+    {
+        gameObject.GetComponent<HitBox>().enabled = true;
     }
 }

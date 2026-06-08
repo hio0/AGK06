@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bg: {fileID: 2100000, guid: ed3d4253c76773a458fc5e1aa3183bde, type: 2}
   EnemyWave:
-  - {fileID: 11400000, guid: 500c8354efd709349a51c5f8c79f1f83, type: 2}
+  - {fileID: 9109475713817834696, guid: 889fa7706a024b94fa89b5bbb0d96669, type: 3}

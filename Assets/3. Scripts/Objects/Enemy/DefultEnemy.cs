@@ -11,7 +11,10 @@ public class DefultEnemy : MonoBehaviour, IEnemy
     // Start is called before the first frame update
     void Start()
     {
+        enemydata = gameObject.GetComponent<Enemy>().me;
         movespeed = enemydata.movespeed;
+
+        transform.position = new Vector2(Random.Range(-2.5f, 2.5f), transform.position.y);
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class DefultEnemy : MonoBehaviour, IEnemy
 
     public void Moving()
     {
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, 3.5f), movespeed * Time.deltaTime);
+        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(transform.position.x, 3.5f), 1.5f * Time.deltaTime);
     }
 
     public void Dyed()

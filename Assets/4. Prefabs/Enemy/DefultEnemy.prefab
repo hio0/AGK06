@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 3112394298719580569}
   - component: {fileID: 3630166763516068248}
   - component: {fileID: 5706544887092139548}
-  - component: {fileID: 2675679064718971709}
   m_Layer: 0
   m_Name: DefultEnemy
   m_TagString: Untagged
@@ -206,8 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505f296e0728d374db9b2027ab4519f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  me: {fileID: 0}
-  shotpoint: {fileID: 0}
+  me: {fileID: 11400000, guid: 500c8354efd709349a51c5f8c79f1f83, type: 2}
+  shotpoint: {fileID: 2501751519518251830}
   bulletime: 0
 --- !u!114 &3630166763516068248
 MonoBehaviour:
@@ -234,15 +233,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 30
---- !u!114 &2675679064718971709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9109475713817834696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99dca2f62e6d9ca45b0a41e0bed69c55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

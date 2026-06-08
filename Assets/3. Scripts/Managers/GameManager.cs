@@ -54,20 +54,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (wavecount < nowstage.EnemyWave.Count)
+        {
+            if(enemyspon.childCount == 0 && isready)
+            {
+                EnemySpawn();
+            }
+        }
+        else
         {
             NextStage();
         }
 
-        if (wavecount < nowstage.EnemyWave.Count && enemyspon.childCount == 0 && isready)
-        {
-            EnemySpawn();
-        }
-
-        if(gameoverP.activeSelf)
+        if (gameoverP.activeSelf)
         {
             gameovercount -= Time.deltaTime;
-            if(gameovercount <= 0)
+            if (gameovercount <= 0)
             {
                 gameovercount = 0;
                 NoContinue();
@@ -81,8 +83,7 @@ public class GameManager : MonoBehaviour
     {
         data = new Data();
 
-        data.stagenum = 1;
-        ResetStage();
+        //data.stagenum = 0;
         SetStage();
     }
 
@@ -90,40 +91,19 @@ public class GameManager : MonoBehaviour
     {
         data.stagenum++;
 
-        ResetStage();
         SetStage();
-    }
-
-    void ResetStage()
-    {
-        for (int i = 0; i < enemyspon.childCount; i++)
-        {
-            Destroy(enemyspon.GetChild(i).gameObject);
-        }
-
-        wavecount = 0;
-        isready = false;
-        gameoverP.SetActive(false);
-        gameovercount = 10;
     }
 
     void SetStage()
     {
-        for (int i = 0; i < enemyspon.childCount; i++)
-        {
-            Destroy(enemyspon.GetChild(i).gameObject);
-        }
+        nowstage = stages[data.stagenum];
 
-        nowstage = stages[data.stagenum - 1];
-        stagenumT.text = nowstage.name;
-        bg.material = nowstage.bg;
-        isready = true;
+        SceneManager.LoadScene(data.stagenum);
     }
 
     void EnemySpawn()
     {
-        GameObject ene = Instantiate(nowstage.EnemyWave[wavecount].enemy, enemyspon);
-        ene.GetComponent<IEnemy>().enemydata = nowstage.EnemyWave[wavecount];
+        GameObject ene = Instantiate(nowstage.EnemyWave[wavecount], new Vector2(0, 9.29f), Quaternion.Euler(0,0,0), enemyspon);
 
         wavecount++;
     }

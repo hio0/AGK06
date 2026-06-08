@@ -22,9 +22,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        bool ishit = collision.gameObject.TryGetComponent<HitBox>(out HitBox hit);
+        collision.gameObject.TryGetComponent<HitBox>(out HitBox hit);
+        bool ishit = hit.enabled;
 
-        if(ishit)
+        if (ishit)
         {
             hit.Damaged(damage);
             Destroy(gameObject);

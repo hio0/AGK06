@@ -6,5 +6,5 @@ using UnityEngine;
 public class Stage : ScriptableObject
 {
     public Material bg;
-    public List<EnemyData> EnemyWave;
+    public List<GameObject> EnemyWave;
 }
