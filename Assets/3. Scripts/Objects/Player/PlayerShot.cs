@@ -22,19 +22,22 @@ public class PlayerShot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bulletime -= Time.deltaTime;
-        if(bulletime <= 0)
+        if(StageManager.stage.isstart)
         {
-            bulletime = 0;
-            bullet = myshot.bullet;
+            bulletime -= Time.deltaTime;
+            if (bulletime <= 0)
+            {
+                bulletime = 0;
+                bullet = myshot.bullet;
 
-            GameObject b = Instantiate(bullet, shotpoint.position, shotpoint.rotation);
-            Bullet ballet = b.GetComponent<Bullet>();
+                GameObject b = Instantiate(bullet, shotpoint.position, shotpoint.rotation);
+                Bullet ballet = b.GetComponent<Bullet>();
 
-            ballet.damage = myshot.bulletdamage;
-            ballet.movespeed = myshot.bulletspeed;
+                ballet.damage = myshot.bulletdamage;
+                ballet.movespeed = myshot.bulletspeed;
 
-            bulletime = myshot.bulletimer;
+                bulletime = myshot.bulletimer;
+            }
         }
     }
 }

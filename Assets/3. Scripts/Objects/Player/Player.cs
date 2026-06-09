@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<HitBox>().hp = me.hp;
         gameObject.GetComponent<HitBox>().Dyed = Dye;
     }
 
@@ -35,11 +34,10 @@ public class Player : MonoBehaviour
             }
             else // hp가 감소됨
             {
-                Debug.Log(hp);
-                Debug.Log(heartPos.childCount);
                 for (int i = heartPos.childCount; i > hp; i--)
                 {
                     Destroy(heartPos.GetChild(i - 1).gameObject);
+                    GameManager.gm.damaged++;
                 }
             }
         }
@@ -52,12 +50,13 @@ public class Player : MonoBehaviour
 
     void Dye()
     {
-        for (int i = heartPos.childCount; i > 0; i--)
+        int a = heartPos.childCount;
+        for (int i = a; i > 0; i--)
         {
             Destroy(heartPos.GetChild(i - 1).gameObject);
         }
 
-        GameManager.gm.GameOver();
+        StageManager.stage.GameOver();
         gameObject.SetActive(false);
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: P-38
   m_EditorClassIdentifier: 
   flyname: P-38
-  hp: 2
+  hp: 3
   movespeed: 4
   bullet: {fileID: 11400000, guid: 095fdebaee3e9674887e24e2f5bc1f7d, type: 2}
   subweapon: {fileID: 4440037169073795232, guid: b4e353399a722cf40bbb44b4fe9985f1, type: 3}

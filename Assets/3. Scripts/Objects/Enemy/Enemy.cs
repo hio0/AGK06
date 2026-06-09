@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     public Transform shotpoint;
     public float bulletime;
+    bool canbullet;
 
     // Start is called before the first frame update
     void Start()
@@ -28,28 +29,33 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bulletime -= Time.deltaTime;
-        if (bulletime <= 0)
+        if(canbullet)
         {
-            bulletime = 0;
+            bulletime -= Time.deltaTime;
+            if (bulletime <= 0)
+            {
+                bulletime = 0;
 
-            GameObject b = Instantiate(me.bullet.bullet, shotpoint.position, Quaternion.Euler(0, 0, -180));
-            Bullet ballet = b.GetComponent<Bullet>();
+                GameObject b = Instantiate(me.bullet.bullet, shotpoint.position, Quaternion.Euler(0, 0, -180));
+                Bullet ballet = b.GetComponent<Bullet>();
 
-            ballet.damage = me.bullet.bulletdamage;
-            ballet.movespeed = me.bullet.bulletspeed;
+                ballet.damage = me.bullet.bulletdamage;
+                ballet.movespeed = me.bullet.bulletspeed;
 
-            bulletime = me.bullet.bulletimer;
+                bulletime = me.bullet.bulletimer;
+            }
         }
     }
 
     private void OnBecameInvisible()
     {
         gameObject.GetComponent<HitBox>().enabled = false;
+        canbullet = false;
     }
 
     private void OnBecameVisible()
     {
         gameObject.GetComponent<HitBox>().enabled = true;
+        canbullet = true;
     }
 }

@@ -18,6 +18,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.up * movespeed * Time.deltaTime);
+
+        if(!StageManager.stage.isstart)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
