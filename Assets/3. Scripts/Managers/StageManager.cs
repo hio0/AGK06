@@ -92,7 +92,7 @@ public class StageManager : MonoBehaviour
 
         while (alimT.transform.localPosition != targetpos)
         {
-            alimT.GetComponent<RectTransform>().localPosition = Vector3.MoveTowards(alimT.GetComponent<RectTransform>().localPosition, targetpos, 0.7f);
+            alimT.GetComponent<RectTransform>().localPosition = Vector3.MoveTowards(alimT.GetComponent<RectTransform>().localPosition, targetpos, 200f * Time.deltaTime);
 
             yield return null;
         }
